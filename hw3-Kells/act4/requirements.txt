@@ -1,0 +1,4 @@
+beautifulsoup4
+lxml
+futures
+more_itertools

@@ -1,0 +1,8 @@
+# act3
+version: "3"
+
+services:
+  act3:
+    build: .
+    volumes:
+      - .:/usr/src/app/
