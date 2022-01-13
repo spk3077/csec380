@@ -1,0 +1,5 @@
+# pip3 install -r requirements.txt
+# math, sys, re, time, and threading are all default packages when installing python
+requests
+ipaddress
+futures

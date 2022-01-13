@@ -1,0 +1,10 @@
+# Only cache exposed to the outside
+version: "3"
+
+services:
+  webserver:
+    build: ./webserver
+  cache:
+    build: ./cache
+    ports:
+      - "80:80"

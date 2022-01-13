@@ -1,0 +1,31 @@
+# Only load balancer exposed outside
+version: "3"
+
+services:
+  webserver:
+    image: httpd:latest
+    hostname: webserver
+    volumes:
+    - ./act3/webserver/index.html:/usr/local/apache2/htdocs/index.html
+    - ./act3/webserver/favicon.ico:/usr/local/apache2/htdocs/favicon.ico
+
+  webserver2:
+    image: httpd:latest
+    hostname: webserver2
+    volumes:
+    - ./act3/webserver2/index.html:/usr/local/apache2/htdocs/index.html
+    - ./act3/webserver2/favicon.ico:/usr/local/apache2/htdocs/favicon.ico
+ 
+  cache:
+    image: varnish:latest
+    hostname: cache
+    volumes:
+    - ./act3/cache/default.vcl:/etc/varnish/default.vcl
+
+  loadbalancer:
+    image: haproxy:latest
+    hostname: loadbalancer
+    volumes:
+    - ./act3/loadbalancer/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+    ports:
+      - "80:80"

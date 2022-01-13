@@ -1,0 +1,14 @@
+# Only load balancer exposed outside
+version: "3"
+
+services:
+  webserver:
+    build: ./webserver
+  webserver2:
+    build: ./webserver2
+  cache:
+    build: ./cache
+  loadbalancer:
+    build: ./loadbalancer
+    ports:
+      - "80:80"
