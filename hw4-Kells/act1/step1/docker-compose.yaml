@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  apache_server:
+    build: .
+    ports:
+      - "80:80"

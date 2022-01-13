@@ -1,0 +1,38 @@
+# Only load balancer exposed outside
+version: "3"
+
+services:
+  webserver:
+    image: php:7.2-apache
+    hostname: webserverphp
+    restart: always
+    volumes:
+    - ./index.php:/var/www/html/index.php
+    - ./favicon.ico:/var/www/html/favicon.ico
+    ports:
+    - 8080:80
+
+  # mySQL Server
+  db:
+    image: mariadb
+    command: --max-allowed-packet=64MB
+    hostname: db
+    restart: always
+    environment:
+      - MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=
+    env_file:
+      - ./db.env
+ 
+  # Matomo
+  matomo:
+    image: matomo
+    hostname: matomo
+    restart: always
+    environment:
+      - MATOMO_DATABASE_HOST=db
+    env_file:
+      - ./db.env
+    ports:
+      - 80:80
+      - 443:443
